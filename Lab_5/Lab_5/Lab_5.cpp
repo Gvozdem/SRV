@@ -4,7 +4,7 @@
 
 std::mutex m;
 
-int coins = 1003;
+int coins = 1002;
 int Bob_coins = 0;
 int Tom_coins = 0;
 
