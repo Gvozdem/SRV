@@ -6,26 +6,22 @@
 
 class MyMutex {
 public:
-    MyMutex() : locked_(false) {}
+	MyMutex() : m_lock(0) {}
 
+	void lock() {
+		int expected = 0;
+		while (!m_lock.compare_exchange_weak(expected, 1, std::memory_order_acquire, std::memory_order_relaxed)) {
+			expected = 0;
+			std::this_thread::yield();
+		}
+	}
 
-    void lock() {
-        while (true) {
-            if (!locked_.exchange(true, std::memory_order_acquire)) {
-                // Успешно получили блокировку
-                return;
-            }
-            // Если блокировка занята, отдаем управление другим потокам
-            std::this_thread::yield();
-        }
-    }
-
-    void unlock() {
-        locked_.store(false, std::memory_order_release);
-    }
+	void unlock() {
+		m_lock.store(0, std::memory_order_release);
+	}
 
 private:
-	std::atomic<bool> locked_;
+	std::atomic<int> m_lock;
 };
 
 MyMutex m;
