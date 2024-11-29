@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\test_client\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E467E257-2EF8-4C14-8975-85D5F9E64216}|test_client\\test_client.vcxproj|E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\test_client\\test_client\\test_client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E467E257-2EF8-4C14-8975-85D5F9E64216}|test_client\\test_client.vcxproj|solutionrelative:test_client\\test_client.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "test_client.cpp",
+              "DocumentMoniker": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\test_client\\test_client\\test_client.cpp",
+              "RelativeDocumentMoniker": "test_client\\test_client.cpp",
+              "ToolTip": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\test_client\\test_client\\test_client.cpp",
+              "RelativeToolTip": "test_client\\test_client.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-29T18:57:26.126Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

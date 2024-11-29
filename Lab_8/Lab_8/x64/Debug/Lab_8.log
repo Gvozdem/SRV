@@ -1,19 +1,19 @@
 ﻿  Lab_8.cpp
-E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(85,44): error C2228: выражение слева от ".load" должно представлять класс, структуру или объединение
+E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44): error C2228: выражение слева от ".load" должно представлять класс, структуру или объединение
   (компиляция исходного файла "Lab_8.cpp")
-      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(85,44):
+      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44):
       тип: std::atomic<lf::Node<T>> *
           with
           [
               T=`anonymous-namespace'::Data
           ]
-      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(85,44):
+      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44):
       возможно, имеется в виду "->"
-      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(85,44):
+      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44):
       контекст создания экземпляра шаблона (сначала самый старый)
           E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\Lab_8.cpp(15,38):
           выполняется компиляция ссылки на экземпляр класс шаблон функции "lf::LockFreeVersionedStack<`anonymous-namespace'::Data>"
-          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(84,14):
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(73,14):
           во время компиляции функции-члена класс шаблон "bool lf::LockFreeVersionedStack<`anonymous-namespace'::Data>::pop(void)"
               E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\Lab_8.cpp(26,17):
               см. первую ссылку на "lf::LockFreeVersionedStack<`anonymous-namespace'::Data>::pop" в "`anonymous-namespace'::writer"

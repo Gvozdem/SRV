@@ -1,0 +1,3 @@
+﻿  Lab_9.cpp
+E:\Вуз\5 семестр\СРВ\SRV\Lab_9\Lab_9\Lab_9.cpp(66,6): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+  Lab_9.vcxproj -> E:\Вуз\5 семестр\СРВ\SRV\Lab_9\x64\Debug\Lab_9.exe
