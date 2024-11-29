@@ -16,17 +16,6 @@ namespace lf {
         typedef std::atomic<Node<T>>* AtomicNodePtr;
         typedef std::atomic_uint AtomicVersion;
 
-        struct VersionHead {
-            AtomicVersion version;
-            AtomicNodePtr head;
-        };
-
-        VersionHead stack_; //Указатель на начало стека
-        AtomicVersion* subscribers_; //Список читателей 
-        size_t subs_num_;
-
-        std::vector<NodePtr> trash_; //Контейнер для хранения устаревших элементов
-        std::atomic_bool stop_flag_;
 
         LockFreeVersionedStack(size_t readers_num) : subs_num_(readers_num) {
             stop_flag_.store(false);
@@ -133,5 +122,17 @@ namespace lf {
                 }
             }
         }
+
+        struct VersionHead {
+            AtomicVersion version;
+            AtomicNodePtr head;
+        };
+
+        VersionHead stack_; //Указатель на начало стека
+        AtomicVersion* subscribers_; //Список читателей 
+        size_t subs_num_;
+
+        std::vector<NodePtr> trash_; //Контейнер для хранения устаревших элементов
+        std::atomic_bool stop_flag_;
     };
 };
