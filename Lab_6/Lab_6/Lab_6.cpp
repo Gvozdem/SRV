@@ -97,7 +97,7 @@ public:
 int main() {
     Vector_Dish dish_mas;
     int gluttony = 500;
-    int efficiency = 500;
+    int efficiency = 50;
 
     std::atomic<int> dead_count(0);
     std::atomic<bool> all_dead(false);
