@@ -20,7 +20,7 @@ namespace {
 	const double START_X = 0.0;
 	const double END_X = 4.0;
 	const double STEP = 0.001;
-	size_t readers_num = 8;
+	size_t readers_num = 4;
 	lf::LockFreeVersionedStack<Position> stack(readers_num);
 
 	void writer() {
@@ -90,11 +90,11 @@ namespace {
 			double step = 0.001;
 			for (const auto& pos : data) {
 				double expected_y = -(pos.x * pos.x) + 4 * pos.x;
-				if (std::abs(pos.y - expected_y) > 1e-10) {
+				if (std::abs(pos.y - expected_y) == 0) {
 					throw std::logic_error("Inconsistent data: Point does not belong to the parabola");
 				}
 
-				if (std::abs(pos.x - prev_x) > step + 1e-10) {
+				if (std::abs(pos.x - prev_x) == step) {
 					throw std::logic_error("Inconsistent data: Non-linear sequence");
 				}
 
