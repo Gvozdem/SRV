@@ -1,5 +1,4 @@
-﻿#include <iostream>
-#include <atomic>
+﻿#include <atomic>
 #include <vector>
 #include <memory>
 #include <thread>
@@ -9,6 +8,9 @@
 #include "lockfree_stack.h"
 #include "node.h"
 
+#define min(a,b)            (((a) < (b)) ? (a) : (b))
+
+
 namespace {
 	struct Position {
 		double x;
@@ -17,8 +19,8 @@ namespace {
 
 	const double START_X = 0.0;
 	const double END_X = 4.0;
-	const double STEP = 0.01;
-	size_t readers_num = 4;
+	const double STEP = 0.001;
+	size_t readers_num = 8;
 	lf::LockFreeVersionedStack<Position> stack(readers_num);
 
 	void writer() {
@@ -26,25 +28,25 @@ namespace {
 		double current_x = START_X;
 		for (size_t i = 0; i < 10000; i++)
 		{
-			for (int i = 0; i < 1000; i++)
+			for (int i = 0; i < 400; i++)
 			{
 				double y = -(current_x * current_x) + 4 * current_x;
-				stack.push({current_x, y});
+				stack.push({ current_x, y });
 				current_x += STEP;
 			}
-			for (int i = 0; i < 1000; i++)
+			for (int i = 0; i < 400; i++)
 			{
 				if (!stack.pop())
 					throw std::runtime_error("can't delete element");
 				current_x -= STEP;
 			}
-			for (int i = 0; i < 500; i++)
+			for (int i = 0; i < 100; i++)
 			{
 				double y = -(current_x * current_x) + 4 * current_x;
-				stack.push({current_x, y});
+				stack.push({ current_x, y });
 				current_x += STEP;
 			}
-			for (int i = 0; i < 500; i++)
+			for (int i = 0; i < 100; i++)
 			{
 				if (!stack.pop())
 				{
@@ -81,20 +83,18 @@ namespace {
 				data_ptr = data_ptr->next;
 			}
 			versions_cnt++;
-			return result;
 		}
 
 		void check(std::vector<Position>& data) {
 			double prev_x = START_X;
-			double step = (END_X - START_X) / (data.size() - 1);
-
+			double step = 0.001;
 			for (const auto& pos : data) {
 				double expected_y = -(pos.x * pos.x) + 4 * pos.x;
-				if (std::abs(pos.y - expected_y) > 1e-6) {
+				if (std::abs(pos.y - expected_y) > 1e-10) {
 					throw std::logic_error("Inconsistent data: Point does not belong to the parabola");
 				}
 
-				if (std::abs(pos.x - prev_x) > step + 1e-6) {
+				if (std::abs(pos.x - prev_x) > step + 1e-10) {
 					throw std::logic_error("Inconsistent data: Non-linear sequence");
 				}
 

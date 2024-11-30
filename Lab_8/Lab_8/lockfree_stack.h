@@ -4,9 +4,11 @@
 #include <atomic>
 #include <vector>
 #include <limits>
-#include <algorithm>
-
 #include "node.h"
+
+#define min(a,b)            (((a) < (b)) ? (a) : (b))
+
+
 
 namespace lf {
 
@@ -110,7 +112,7 @@ namespace lf {
                 if (version == 0) {
                     continue;
                 }
-                min_version = std::min(min_version, version);
+                min_version = min(min_version, version);
             }
 
             for (size_t i = 0; i < trash_.size();) {
