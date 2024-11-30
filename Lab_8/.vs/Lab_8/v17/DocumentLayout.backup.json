@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\Lab_8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|solutionrelative:Lab_8\\Lab_8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\lockfree_stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|solutionrelative:Lab_8\\lockfree_stack.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\Lab_8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|solutionrelative:Lab_8\\Lab_8.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{43B2874B-97DB-4C07-9A4F-52AE58C1ADA9}|Lab_8\\Lab_8.vcxproj|E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -22,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "lockfree_stack.h",
               "DocumentMoniker": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\lockfree_stack.h",
               "RelativeDocumentMoniker": "Lab_8\\lockfree_stack.h",
-              "ToolTip": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\lockfree_stack.h",
-              "RelativeToolTip": "Lab_8\\lockfree_stack.h",
-              "ViewState": "AgIAADEAAAAAAAAAAAAUwEkAAAAMAAAAAAAAAA==",
+              "ToolTip": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\lockfree_stack.h*",
+              "RelativeToolTip": "Lab_8\\lockfree_stack.h*",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-29T14:49:15.05Z",
               "EditorCaption": ""
@@ -45,19 +45,19 @@
               "RelativeDocumentMoniker": "Lab_8\\node.h",
               "ToolTip": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\node.h",
               "RelativeToolTip": "Lab_8\\node.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-29T14:46:58.365Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Lab_8.cpp",
               "DocumentMoniker": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\Lab_8.cpp",
               "RelativeDocumentMoniker": "Lab_8\\Lab_8.cpp",
               "ToolTip": "E:\\\u0412\u0443\u0437\\5 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0421\u0420\u0412\\SRV\\Lab_8\\Lab_8\\Lab_8.cpp",
               "RelativeToolTip": "Lab_8\\Lab_8.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAGgAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-29T11:12:25.651Z",
               "EditorCaption": ""

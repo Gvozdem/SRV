@@ -3,113 +3,129 @@
 #include <vector>
 #include <memory>
 #include <thread>
-#include <Windows.h>
+#include <cmath>
+#include <random>
 
 #include "lockfree_stack.h"
 #include "node.h"
 
-
 namespace {
-    typedef int Data;
-    size_t readers_num = 4;
-    lf::LockFreeVersionedStack<Data> stack(readers_num);
+	struct Position {
+		double x;
+		double y;
+	};
 
-    void writer() {
-        for (size_t i = 0; i < 10000; i++)
-        {
-            for (int i = 0; i < 1000; i++)
-            {
-                stack.push(i);
-            }
-            for (int i = 0; i < 1000; i++)
-            {
-                if (!stack.pop())
-                    throw std::runtime_error("can't delete element");
-            }
-            for (int i = 0; i < 500; i++)
-            {
-                stack.push(i);
-            }
-            for (int i = 0; i < 500; i++)
-            {
-                if (!stack.pop())
-                {
-                    throw std::runtime_error("can't delete element");
-                }
-            }
-        }
-        stack.stop();
-        std::cout << "All version" << stack.last_version() << std::endl;
-    }
+	const double START_X = 0.0;
+	const double END_X = 4.0;
+	const double STEP = 0.01;
+	size_t readers_num = 4;
+	lf::LockFreeVersionedStack<Position> stack(readers_num);
 
-    class Reader {
-    public:
-        Reader(unsigned int id, lf::LockFreeVersionedStack<Data>* stack): id_(id), stack_(stack){}
+	void writer() {
+		// Какое на данный момент x, чтобы, когда добавляем они шли дальше (последовательно)
+		double current_x = START_X;
+		for (size_t i = 0; i < 10000; i++)
+		{
+			for (int i = 0; i < 1000; i++)
+			{
+				double y = -(current_x * current_x) + 4 * current_x;
+				stack.push({current_x, y});
+				current_x += STEP;
+			}
+			for (int i = 0; i < 1000; i++)
+			{
+				if (!stack.pop())
+					throw std::runtime_error("can't delete element");
+				current_x -= STEP;
+			}
+			for (int i = 0; i < 500; i++)
+			{
+				double y = -(current_x * current_x) + 4 * current_x;
+				stack.push({current_x, y});
+				current_x += STEP;
+			}
+			for (int i = 0; i < 500; i++)
+			{
+				if (!stack.pop())
+				{
+					throw std::runtime_error("can't delete element");
+				}
+				current_x -= STEP;
+			}
+		}
 
-        void life() {
-            while (!stack_->is_stopped()){
-                auto data = read();
-                check(data);
-            }
-        }
+		stack.stop();
+		std::cout << "All versions: " << stack.last_version() << std::endl;
+	}
 
-        std::vector<Data> read() {
-            lf::LockFreeVersionedStack<Data>::NodePtr data_ptr;
-            if (!stack_->subscribe(id_, data_ptr))
-            {
-                return {};
-            }
+	class Reader {
+	public:
+		Reader(unsigned int id, lf::LockFreeVersionedStack<Position>* stack) : id_(id), stack_(stack) {}
 
-            std::vector<Data> result;
-            while (data_ptr != nullptr)
-            {
-                result.push_back(data_ptr->data);
-                data_ptr = data_ptr->next;
-            }
-            versions_cnt++;
-        }
+		void life() {
+			while (!stack_->is_stopped()) {
+				auto data = read();
+				check(data);
+			}
+		}
 
-        void check(std::vector<Data>& data) {
-            if (data.size() > 10000)
-            {
-                throw std::logic_error("Wrong sequence size");
-            }
-            if (data.size() > 1) {
-                for (size_t i = 0; i < data.size() - 1; i++)
-                {
-                    if (data[i] - data[i - 1] != -1) {
-                        throw std::logic_error("Wrong sequence");
-                    }
-                }
-            }
-        }
-        unsigned int versions_cnt = 0;
-    private:
-        int id_;
-        lf::LockFreeVersionedStack<int>* stack_;
-        std::thread thread_;
-    };
+		std::vector<Position> read() {
+			lf::LockFreeVersionedStack<Position>::NodePtr data_ptr;
+			if (!stack_->subscribe(id_, data_ptr)) {
+				return {};
+			}
+
+			std::vector<Position> result;
+			while (data_ptr != nullptr) {
+				result.push_back(data_ptr->data);
+				data_ptr = data_ptr->next;
+			}
+			versions_cnt++;
+			return result;
+		}
+
+		void check(std::vector<Position>& data) {
+			double prev_x = START_X;
+			double step = (END_X - START_X) / (data.size() - 1);
+
+			for (const auto& pos : data) {
+				double expected_y = -(pos.x * pos.x) + 4 * pos.x;
+				if (std::abs(pos.y - expected_y) > 1e-6) {
+					throw std::logic_error("Inconsistent data: Point does not belong to the parabola");
+				}
+
+				if (std::abs(pos.x - prev_x) > step + 1e-6) {
+					throw std::logic_error("Inconsistent data: Non-linear sequence");
+				}
+
+				prev_x = pos.x;
+			}
+		}
+
+		unsigned int versions_cnt = 0;
+
+	private:
+		int id_;
+		lf::LockFreeVersionedStack<Position>* stack_;
+	};
 }
 
-int main()
-{
-    std::vector<Reader> readers;
-    std::vector<std::thread> threads;
-    for (int i = 0; i < readers_num; i++) {
-        readers.emplace_back(i, &stack);
-    }
-    for (int i = 0; i < readers_num; i++)
-    {
-        threads.emplace_back(i, &stack);
-    }
+int main() {
+	std::vector<Reader> readers;
+	std::vector<std::thread> threads;
+	for (int i = 0; i < readers_num; i++) {
+		readers.emplace_back(i, &stack);
+	}
+	for (int i = 0; i < readers_num; i++) {
+		threads.emplace_back(&Reader::life, &readers[i]);
+	}
 
-    writer();
+	writer();
 
-    for (size_t i = 0; i < readers_num; i++)
-    {
-        threads[i].join();
-    }
-    for (size_t i = 0; i < readers_num; i++) {
-        std::cout << "reader" << i << " : " << readers[i].versions_cnt << std::endl;
-    }
+	for (size_t i = 0; i < readers_num; i++) {
+		threads[i].join();
+	}
+	for (size_t i = 0; i < readers_num; i++) {
+		std::cout << "Reader " << i << " : " << readers[i].versions_cnt << std::endl;
+	}
 }

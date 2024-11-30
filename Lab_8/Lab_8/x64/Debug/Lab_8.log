@@ -1,20 +1,40 @@
 ﻿  Lab_8.cpp
-E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44): error C2228: выражение слева от ".load" должно представлять класс, структуру или объединение
+E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36): error C2672: "min": не найдена соответствующая перегруженная функция
   (компиляция исходного файла "Lab_8.cpp")
-      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44):
-      тип: std::atomic<lf::Node<T>> *
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(105,26):
+      может быть "_Ty std::min(std::initializer_list<_Elem>)"
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+          "_Ty std::min(std::initializer_list<_Elem>)": ожидаются аргументы 1 — 2 предоставлены
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(102,26):
+      или       "_Ty std::min(std::initializer_list<_Elem>,_Pr)"
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+          '_Ty std::min(std::initializer_list<_Elem>,_Pr)': не удалось вывести аргумент шаблон для 'std::initializer_list<_Elem>' из 'uint64_t'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(95,6):
+      или       "const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)"
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+          "const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)": в шаблон параметр "_Ty" неоднозначен
+              E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+              может быть "unsigned int"
+              E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+              или       "uint64_t"
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+          'const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)': не удалось вывести аргумент шаблон для 'const _Ty &' из 'unsigned int'
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.41.34120\include\utility(85,33):
+      или       "const _Ty &std::min(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)"
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+          "const _Ty &std::min(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)": ожидаются аргументы 3 — 2 предоставлены
+      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(113,36):
+      контекст создания экземпляра шаблона (сначала самый старый)
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\Lab_8.cpp(22,39):
+          выполняется компиляция ссылки на экземпляр класс шаблон функции "lf::LockFreeVersionedStack<`anonymous-namespace'::Position>"
+          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(104,14):
+          во время компиляции функции-члена класс шаблон "void lf::LockFreeVersionedStack<`anonymous-namespace'::Position>::update_trash(lf::Node<T> *)"
           with
           [
-              T=`anonymous-namespace'::Data
+              T=`anonymous-namespace'::Position
           ]
-      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44):
-      возможно, имеется в виду "->"
-      E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(74,44):
-      контекст создания экземпляра шаблона (сначала самый старый)
-          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\Lab_8.cpp(15,38):
-          выполняется компиляция ссылки на экземпляр класс шаблон функции "lf::LockFreeVersionedStack<`anonymous-namespace'::Data>"
-          E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(73,14):
-          во время компиляции функции-члена класс шаблон "bool lf::LockFreeVersionedStack<`anonymous-namespace'::Data>::pop(void)"
-              E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\Lab_8.cpp(26,17):
-              см. первую ссылку на "lf::LockFreeVersionedStack<`anonymous-namespace'::Data>::pop" в "`anonymous-namespace'::writer"
+              E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\lockfree_stack.h(85,25):
+              см. первую ссылку на "lf::LockFreeVersionedStack<`anonymous-namespace'::Position>::update_trash" в "lf::LockFreeVersionedStack<`anonymous-namespace'::Position>::pop"
+              E:\Вуз\5 семестр\СРВ\SRV\Lab_8\Lab_8\Lab_8.cpp(37,5):
+              см. первую ссылку на "lf::LockFreeVersionedStack<`anonymous-namespace'::Position>::pop" в "`anonymous-namespace'::writer"
   

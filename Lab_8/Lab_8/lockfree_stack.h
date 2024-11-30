@@ -3,7 +3,8 @@
 #include <iostream>
 #include <atomic>
 #include <vector>
-#include <limits> 
+#include <limits>
+#include <algorithm>
 
 #include "node.h"
 
@@ -13,7 +14,7 @@ namespace lf {
     class LockFreeVersionedStack {
     public:
         typedef Node<T>* NodePtr;
-        typedef std::atomic<Node<T>>* AtomicNodePtr;
+        typedef std::atomic<Node<T>*> AtomicNodePtr;
         typedef std::atomic_uint AtomicVersion;
 
 
@@ -109,7 +110,7 @@ namespace lf {
                 if (version == 0) {
                     continue;
                 }
-                min_version = min(min_version, version);
+                min_version = std::min(min_version, version);
             }
 
             for (size_t i = 0; i < trash_.size();) {
@@ -135,4 +136,4 @@ namespace lf {
         std::vector<NodePtr> trash_; //Контейнер для хранения устаревших элементов
         std::atomic_bool stop_flag_;
     };
-};
+}
